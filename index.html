@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mystery of the Old Lighthouse</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>The Mystery of the Old Lighthouse</h1>
+            <p class="subtitle">A thrilling tale for your English journey</p>
+        </header>
+
+        <section class="transcript-section">
+            <div id="text-container">
+                <p id="transcript-text">
+                    In a small coastal town, perched on a rocky cliff, stood the old lighthouse. It had been abandoned for decades, and local legend said a ghost of a sea captain, Captain Elias, still roamed its spiral staircase. Twelve-year-old Leo, a boy with an insatiable curiosity, decided to investigate. He was a skeptical boy, always looking for logical explanations, but the lighthouse drew him in like a moth to a flame. The wind howled, and the waves crashed against the rocks below, creating a haunting soundtrack for his adventure.
+                    He pushed open the heavy wooden door, which groaned in protest. Dust motes danced in the slivers of sunlight that pierced the grimy windows. The air was thick with the scent of salt and decay. Leo cautiously climbed the winding stairs, his flashlight beam cutting through the gloom. On the fifth landing, he saw something glinting in the corner. It wasn’t a ghost, but a small, tarnished brass key. He picked it up, feeling a strange sense of purpose.
+                    The key fit a small, hidden chest in the captain's old quarters at the top of the lighthouse. He unlocked it, his heart pounding with excitement. Inside, he found a journal, its pages filled with elegant handwriting. The journal wasn’t about a ghost, but a hidden treasure map leading to a secret cove nearby. Captain Elias wasn’t a ghost; he was simply a man who had wanted to protect his treasure. The legend of the ghost was just a clever ruse to keep people away.
+                    Leo closed the journal, a smile spreading across his face. He had solved the mystery. He didn’t find a ghost, but something far more valuable: a tale of an old captain and a thrilling treasure hunt. He knew his adventure had just begun. He carefully folded the map and headed back down the stairs, no longer afraid of the old lighthouse. It was no longer a place of fear, but a place of discovery. The old legend had finally been put to rest.
+                </p>
+            </div>
+            <div class="controls">
+                <button id="play-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </button>
+                <button id="pause-btn" style="display:none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pause"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                </button>
+            </div>
+        </section>
+
+        <section class="quiz-section">
+            <h2>Quiz Time! Drag & Drop</h2>
+            <p>Drag the correct answers from the "Word Bank" to fill in the blanks.</p>
+            <div id="word-bank" class="word-bank">
+                </div>
+            <div id="quiz-questions">
+                </div>
+            <button id="check-quiz-btn">Check Answers</button>
+            <div id="quiz-feedback" class="quiz-feedback"></div>
+        </section>
+
+    </div>
+
+    <div id="witch-popup" class="witch-popup">
+        <div class="witch-popup-content">
+            <span class="close-btn">&times;</span>
+            <img src="witch.png" alt="Evil Witch" class="witch-image">
+            <h3>Oh no! Try again, human!</h3>
+            <p>Looks like you made a mistake. The magic of the lighthouse is against you!</p>
+        </div>
+    </div>
+
+    <script src="transcript.js"></script>
+    <audio id="background-audio" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+</body>
+</html>

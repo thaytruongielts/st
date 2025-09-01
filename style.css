@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital@1&display=swap');
+
+:root {
+    --primary-color: #2c3e50; /* Dark Blue */
+    --secondary-color: #3498db; /* Bright Blue */
+    --accent-color: #e74c3c; /* Red */
+    --text-color: #ecf0f1; /* Light Gray */
+    --background-dark: #1f2c38; /* Very Dark Blue */
+    --background-light: #34495e; /* Darker Blue */
+    --highlight-color: #f1c40f; /* Yellow */
+    --correct-color: #27ae60; /* Green */
+    --incorrect-color: #c0392b; /* Dark Red */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, var(--background-dark), var(--background-light));
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top instead of center */
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding-top: 50px; /* Add some top padding */
+    padding-bottom: 50px;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    background-color: rgba(25, 42, 58, 0.9);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 2.5em;
+    color: var(--secondary-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+header h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+.subtitle {
+    font-style: italic;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.transcript-section {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+#text-container {
+    height: 350px;
+    overflow-y: auto;
+    padding-right: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondary-color) var(--background-light);
+}
+
+#text-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+#text-container::-webkit-scrollbar-track {
+    background: var(--background-light);
+    border-radius: 10px;
+}
+
+#text-container::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    border: 2px solid var(--background-light);
+}
+
+#transcript-text {
+    font-size: 1.1em;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+#transcript-text .word {
+    transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+#transcript-text .word.highlight {
+    color: var(--highlight-color);
+    font-weight: 700;
+    text-shadow: 0 0 5px rgba(241, 196, 15, 0.5);
+    background-color: rgba(241, 196, 15, 0.1);
+    border-radius: 5px;
+    padding: 2px 4px;
+    margin: 0 -4px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.controls button {
+    background-color: var(--secondary-color);
+    color: var(--background-dark);
+    border: none;
+    padding: 15px 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
+
+.controls button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.6);
+}
+
+.controls button svg {
+    width: 28px;
+    height: 28px;
+}
+
+/* Quiz Section Styles */
+.quiz-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.quiz-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2em;
+    color: var(--highlight-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.quiz-section p {
+    text-align: center;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.word-bank {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    min-height: 80px; /* Ensure space for words */
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
+.draggable-word {
+    background-color: var(--secondary-color);
+    color: var(--background-dark);
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: grab;
+    font-weight: 700;
+    transition: transform 0.1s ease, background-color 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    user-select: none; /* Prevent text selection */
+}
+
+.draggable-word:hover {
+    background-color: #4fb9ff;
+}
+
+.draggable-word:active {
+    cursor: grabbing;
+    transform: scale(1.05);
+}
+
+.quiz-question {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.quiz-question span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.quiz-blank {
+    display: inline-block;
+    width: 120px; /* Adjust as needed */
+    min-height: 30px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px dashed var(--secondary-color);
+    border-radius: 5px;
+    vertical-align: middle;
+    margin: 0 5px;
+    padding: 5px;
+    text-align: center;
+    line-height: 30px;
+    color: transparent; /* Hide text initially */
+    position: relative;
+    overflow: hidden; /* Hide overflow of dragged word */
+}
+
+.quiz-blank.has-word {
+    border-style: solid;
+    border-color: var(--highlight-color);
+    color: var(--text-color); /* Show text when word is dropped */
+}
+
+.quiz-blank .draggable-word {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    width: auto;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 4px 8px; /* Smaller padding for dropped words */
+}
+
+#check-quiz-btn {
+    display: block;
+    margin: 40px auto 20px auto;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.4);
+}
+
+#check-quiz-btn:hover {
+    background-color: #e46e61;
+    transform: translateY(-2px);
+}
+
+.quiz-feedback {
+    text-align: center;
+    font-weight: 700;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 30px;
+}
+
+.quiz-feedback.correct {
+    background-color: rgba(39, 174, 96, 0.2);
+    color: var(--correct-color);
+}
+
+.quiz-feedback.incorrect {
+    background-color: rgba(192, 57, 43, 0.2);
+    color: var(--incorrect-color);
+}
+
+/* Witch Pop-up Styles */
+.witch-popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInPopup 0.3s ease-out;
+}
+
+@keyframes fadeInPopup {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.witch-popup-content {
+    background-color: var(--background-dark);
+    margin: auto;
+    padding: 30px;
+    border: 3px solid var(--accent-color);
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    position: relative;
+    animation: popUpScale 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes popUpScale {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.witch-image {
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+    animation: pulseWitch 1.5s infinite alternate;
+}
+
+@keyframes pulseWitch {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+.witch-popup-content h3 {
+    color: var(--accent-color);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.witch-popup-content p {
+    color: var(--text-color);
+    font-size: 1.1em;
+}
+
+.close-btn {
+    color: var(--text-color);
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--accent-color);
+    text-decoration: none;
+    cursor: pointer;
+}
